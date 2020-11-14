@@ -23,8 +23,8 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "progLanguage")
-    private String progLanguage;
+    @Column(name = "email")
+    private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
@@ -34,12 +34,12 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public String getProgLanguage(){
-        return progLanguage;
+    public String getEmail(){
+        return email;
     }
 
-    public void setProgLanguage(String progLanguage){
-        this.progLanguage= progLanguage;
+    public void setEmail(String email){
+        this.email = email;
     }
 
     public Long getId() {
@@ -101,16 +101,16 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public User(Long id, String username, String password, String progLanguage){
+    public User(Long id, String username, String password, String email){
         this.id = id;
         this.username = username;
         this.password = password;
-        this.progLanguage = progLanguage;
+        this.email = email;
     }
 
     @Override
     public String toString(){
         return "User " + this.getId() + "\n"
-                + this.getUsername()+"\n" + this.getProgLanguage();
+                + this.getUsername()+"\n" + this.getEmail();
     }
 }
